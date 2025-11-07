@@ -35,7 +35,9 @@ def split_maamarim_file(input_file: str, docs_per_chunk: int = 10):
         "topic_to_chunks": {},
         "concept_to_chunks": {},
         "doc_id_to_chunk": {},
-        "date_to_chunks": {}
+        "date_to_chunks": {},
+        "opening_phrase_to_chunks": {},
+        "glossary_term_to_chunks": {}  # New: Glossary terms to chunks
     }
     
     # Split into chunks
@@ -104,6 +106,44 @@ def split_maamarim_file(input_file: str, docs_per_chunk: int = 10):
                     master_index["date_to_chunks"][gregorian_date] = []
                 if chunk_num + 1 not in master_index["date_to_chunks"][gregorian_date]:
                     master_index["date_to_chunks"][gregorian_date].append(chunk_num + 1)
+            
+            # Map opening phrases to chunks
+            opening_phrase = doc.get('metadata', {}).get('opening_phrase', '')
+            if opening_phrase and opening_phrase.strip():
+                if opening_phrase not in master_index["opening_phrase_to_chunks"]:
+                    master_index["opening_phrase_to_chunks"][opening_phrase] = []
+                if chunk_num + 1 not in master_index["opening_phrase_to_chunks"][opening_phrase]:
+                    master_index["opening_phrase_to_chunks"][opening_phrase].append(chunk_num + 1)
+            
+            # Map glossary terms to chunks
+            glossary_text = doc.get('content', {}).get('glossary', '')
+            if glossary_text and glossary_text.strip():
+                glossary_text = glossary_text.lstrip('|')
+                entries = [e.strip() for e in glossary_text.split(';') if e.strip()]
+                
+                for entry in entries:
+                    if ':' in entry:
+                        hebrew_part = entry.split(':', 1)[0].strip()
+                        if '(' in hebrew_part:
+                            hebrew_term = hebrew_part.split('(')[0].strip()
+                            transliteration = hebrew_part.split('(')[1].rstrip(')').strip()
+                        else:
+                            hebrew_term = hebrew_part
+                            transliteration = ""
+                        
+                        # Index Hebrew term
+                        if hebrew_term:
+                            if hebrew_term not in master_index["glossary_term_to_chunks"]:
+                                master_index["glossary_term_to_chunks"][hebrew_term] = []
+                            if chunk_num + 1 not in master_index["glossary_term_to_chunks"][hebrew_term]:
+                                master_index["glossary_term_to_chunks"][hebrew_term].append(chunk_num + 1)
+                        
+                        # Index transliteration
+                        if transliteration:
+                            if transliteration not in master_index["glossary_term_to_chunks"]:
+                                master_index["glossary_term_to_chunks"][transliteration] = []
+                            if chunk_num + 1 not in master_index["glossary_term_to_chunks"][transliteration]:
+                                master_index["glossary_term_to_chunks"][transliteration].append(chunk_num + 1)
         
         # Create individual document files
         for doc in chunk_docs:

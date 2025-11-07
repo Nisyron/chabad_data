@@ -23,6 +23,7 @@ def create_search_indexes(structured_file: str):
     concept_index = defaultdict(list)
     reference_index = defaultdict(list)
     opening_phrase_index = defaultdict(list)
+    glossary_index = defaultdict(list)  # New: Glossary term index
     
     # Document summary for quick overview
     document_summary = []
@@ -102,6 +103,62 @@ def create_search_indexes(structured_file: str):
                 "hebrew_date": metadata.get('hebrew_date', ''),
                 "topics": metadata.get('topics', [])  # Include ALL topics
             })
+        
+        # Glossary index - parse glossary entries
+        glossary_text = content.get('glossary', '')
+        if glossary_text and glossary_text.strip():
+            # Glossary format: "|Hebrew (Translit): English; Hebrew2 (Translit2): English2; ..."
+            # Remove leading pipe if present
+            glossary_text = glossary_text.lstrip('|')
+            # Split by semicolon to get individual entries
+            entries = [e.strip() for e in glossary_text.split(';') if e.strip()]
+            
+            for entry in entries:
+                # Format: "Hebrew (Translit): English definition"
+                if ':' in entry:
+                    hebrew_part = entry.split(':', 1)[0].strip()
+                    english_part = entry.split(':', 1)[1].strip()
+                    
+                    # Extract Hebrew term (before parentheses if present)
+                    if '(' in hebrew_part:
+                        hebrew_term = hebrew_part.split('(')[0].strip()
+                        transliteration = hebrew_part.split('(')[1].rstrip(')').strip()
+                    else:
+                        hebrew_term = hebrew_part
+                        transliteration = ""
+                    
+                    # Index by Hebrew term
+                    if hebrew_term:
+                        glossary_index[hebrew_term].append({
+                            "doc_id": doc_id,
+                            "transliteration": transliteration,
+                            "definition": english_part,
+                            "hebrew_date": metadata.get('hebrew_date', '')
+                        })
+                    
+                    # Also index by transliteration if present
+                    if transliteration:
+                        glossary_index[transliteration].append({
+                            "doc_id": doc_id,
+                            "hebrew_term": hebrew_term,
+                            "definition": english_part,
+                            "hebrew_date": metadata.get('hebrew_date', '')
+                        })
+                    
+                    # Index by English definition keywords (first few words)
+                    if english_part:
+                        # Take first 2-3 words as keywords
+                        english_words = english_part.split()[:3]
+                        for word in english_words:
+                            if len(word) > 3:  # Only index meaningful words
+                                word_lower = word.lower().rstrip('.,;:')
+                                if word_lower not in ['the', 'and', 'of', 'in', 'to', 'a', 'an']:
+                                    glossary_index[word_lower].append({
+                                        "doc_id": doc_id,
+                                        "hebrew_term": hebrew_term,
+                                        "full_definition": english_part,
+                                        "hebrew_date": metadata.get('hebrew_date', '')
+                                    })
     
     # Save indexes
     indexes = {
@@ -134,6 +191,11 @@ def create_search_indexes(structured_file: str):
             "description": "Index by opening phrases of documents",
             "total_phrases": len(opening_phrase_index),
             "phrases": dict(opening_phrase_index)
+        },
+        "glossary_index": {
+            "description": "Index by glossary terms (Hebrew, transliteration, and English keywords)",
+            "total_glossary_terms": len(glossary_index),
+            "glossary_terms": dict(glossary_index)
         }
     }
     
@@ -244,6 +306,7 @@ def create_search_indexes(structured_file: str):
     print(f"- Unique dates: {len(date_index)}")
     print(f"- Unique references: {len(reference_index)}")
     print(f"- Unique opening phrases: {len(opening_phrase_index)}")
+    print(f"- Unique glossary terms: {len(glossary_index)}")
 
 if __name__ == "__main__":
     create_search_indexes("maamarim_structured.json")
