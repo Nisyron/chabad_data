@@ -1,0 +1,167 @@
+MAAMARIM COLLECTION - QUICK REFERENCE
+==================================================
+
+Total Documents: 195
+Total Unique Topics: 19
+Total Unique Concepts: 19
+Date Range: 1941-1968
+
+DOCUMENT SUMMARY:
+--------------------
+ID: 1_ג
+Date: יו"ד שבט, תשי"א (1951)
+Opening: באתי לגני אחותי כלה2
+Topics: שכינה, צדיקים, תחתונים, עליונים, אצילות
+Words: 2869, Chunks: 13
+
+ID: 1_יג
+Date: י"ג שבט, ה'תשי"א (1951)
+Opening: N/A
+Topics: שכינה, אצילות, בריאה
+Words: 833, Chunks: 4
+
+ID: 1_יט
+Date: יו"ד שבט, תשי"ב (1952)
+Opening: N/A
+Topics: שכינה, צדיקים, תחתונים, אצילות, יצירה
+Words: 2693, Chunks: 11
+
+ID: 1_כט
+Date: יו"ד שבט, ה'תשי"ג (1953)
+Opening: N/A
+Topics: שכינה, צדיקים, תחתונים, משכן, מקדש
+Words: 2853, Chunks: 13
+
+ID: 1_לז
+Date: N/A
+Opening: N/A
+Topics: N/A
+Words: 246, Chunks: 1
+
+ID: 1_מג
+Date: י"ג אלול, ה'תשי"ד (1954)
+Opening: N/A
+Topics: מלכות
+Words: 1281, Chunks: 6
+
+ID: 1_נא
+Date: מבה"ח כסלו, תשי"ז (1957)
+Opening: N/A
+Topics: שכינה, צדיקים, תחתונים, עליונים, בריאה
+Words: 4370, Chunks: 18
+
+ID: 1_סה
+Date: יו"ד שבט, ה'תשי"ט (1959)
+Opening: N/A
+Topics: שכינה, צדיקים, תחתונים, עליונים, אצילות
+Words: 3608, Chunks: 15
+
+ID: 1_עז
+Date: ט"ז אדר, ה'תשכ"ח (1968)
+Opening: N/A
+Topics: שכינה, משכן, מקדש, קרבנות, קטרת
+Words: 1193, Chunks: 3
+
+ID: 1_פג
+Date: N/A
+Opening: N/A
+Topics: בריאה, משכן, אברהם, דעת
+Words: 1285, Chunks: 5
+
+ID: 1_פט
+Date: N/A
+Opening: N/A
+Topics: עליונים, אצילות, משה, חכמה, דעת
+Words: 2225, Chunks: 10
+
+ID: 1_קג
+Date: N/A
+Opening: N/A
+Topics: מקדש, אברהם, מלכות, חכמה, בינה
+Words: 2923, Chunks: 13
+
+ID: 1_קיג
+Date: N/A
+Opening: N/A
+Topics: N/A
+Words: 0, Chunks: 0
+
+ID: 1_קיט
+Date: N/A
+Opening: N/A
+Topics: שכינה, צדיקים, תחתונים, עליונים, אצילות
+Words: 1937, Chunks: 8
+
+ID: 1_קכט
+Date: N/A
+Opening: N/A
+Topics: תחתונים, בריאה, אברהם, משה, מלכות
+Words: 1232, Chunks: 6
+
+ID: 1_קלט
+Date: N/A
+Opening: N/A
+Topics: אברהם, משה, מלכות, חכמה, דעת
+Words: 2416, Chunks: 11
+
+ID: 1_קנא
+Date: N/A
+Opening: N/A
+Topics: שכינה, צדיקים, קרבנות, משה, מלכות
+Words: 2309, Chunks: 10
+
+ID: 1_קס
+Date: N/A
+Opening: N/A
+Topics: N/A
+Words: 0, Chunks: 0
+
+ID: 1_קסז
+Date: N/A
+Opening: N/A
+Topics: צדיקים, קרבנות, חכמה, דעת
+Words: 1665, Chunks: 7
+
+ID: 1_קעה
+Date: N/A
+Opening: N/A
+Topics: בריאה, מקדש, קרבנות, משה, מלכות
+Words: 2222, Chunks: 10
+
+... and 175 more documents
+
+TOP TOPICS:
+---------------
+מלכות: 106 documents
+דעת: 101 documents
+תחתונים: 81 documents
+בריאה: 79 documents
+משה: 79 documents
+צדיקים: 78 documents
+חכמה: 74 documents
+מקדש: 61 documents
+אצילות: 59 documents
+בינה: 51 documents
+אברהם: 47 documents
+עליונים: 44 documents
+שכינה: 36 documents
+משכן: 30 documents
+קרבנות: 25 documents
+
+TOP CONCEPTS:
+---------------
+Kingship: 106 documents
+Knowledge: 101 documents
+Lower worlds: 81 documents
+Creation: 79 documents
+Moses: 79 documents
+Righteous ones: 78 documents
+Wisdom: 74 documents
+Temple: 61 documents
+Emanation: 59 documents
+Understanding: 51 documents
+Abraham: 47 documents
+Upper worlds: 44 documents
+Shechinah/Divine Presence: 36 documents
+Tabernacle: 30 documents
+Sacrifices: 25 documents
